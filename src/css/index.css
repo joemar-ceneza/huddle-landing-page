@@ -1,5 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Poppins:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Poppins:wght@600;700;800&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 @tailwind variants;
+
+@layer base {
+  body {
+    @apply bg-night text-white font-openSans antialiased;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply max-w-screen-xl w-11/12 mx-auto;
+  }
+  .glass {
+    @apply bg-white/5 border border-white/10 backdrop-blur-sm;
+  }
+  .text-gradient {
+    @apply bg-brand-text bg-clip-text text-transparent;
+  }
+}

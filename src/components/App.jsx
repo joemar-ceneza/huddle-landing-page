@@ -4,7 +4,7 @@ import Footer from "./Footer";
 
 export default function App() {
     return (
-        <main className="max-w-full w-screen mx-auto flex flex-col font-bodyFont text-center max-xs:text-xs">
+        <main className="min-h-screen flex flex-col overflow-x-hidden font-openSans">
             <NavigationBar />
             <HuddlePage />
             <Footer />

@@ -1,14 +1,38 @@
-import Logo from "../images/logo.svg";
+import LogoWhite from "../images/logo-white.svg";
+
+const links = [
+    { label: "Features", href: "#features" },
+    { label: "Testimonials", href: "#testimonials" },
+    { label: "Pricing", href: "#pricing" },
+    { label: "FAQ", href: "#faq" },
+];
 
 export default function NavigationBar() {
     return (
-        <nav className="max-w-screen-2xl w-11/12 flex justify-between mx-auto my-12">
-            <div className="flex justify-center items-center max-xs:justify-start">
-                <img className="max-xs:w-3/4" src={Logo} alt="Workflow logo" />
+        <nav className="sticky top-0 z-50 border-b border-white/10 bg-night/70 backdrop-blur-md">
+            <div className="container-x flex items-center justify-between py-4">
+                <a href="#top" className="flex items-center">
+                    <img className="w-28 sm:w-32" src={LogoWhite} alt="Huddle logo" />
+                </a>
+                <div className="hidden md:flex items-center gap-8">
+                    {links.map((link) => (
+                        <a key={link.label} href={link.href} className="text-sm text-muted hover:text-white transition-colors">
+                            {link.label}
+                        </a>
+                    ))}
+                </div>
+                <div className="flex items-center gap-3">
+                    <a href="#top" className="hidden sm:inline text-sm text-muted hover:text-white transition-colors">
+                        Sign in
+                    </a>
+                    <a
+                        href="#pricing"
+                        className="rounded-full bg-brand-gradient px-5 py-2.5 text-sm font-semibold text-white shadow-glow hover:-translate-y-0.5 transition-transform duration-300"
+                    >
+                        Get Started
+                    </a>
+                </div>
             </div>
-            <button className="w-36 rounded-3xl border-2 border-pink-400 hover:border-pink-300 text-pink-400 hover:text-pink-300 p-2 shadow cursor-pointer">
-                Try it Free
-            </button>
         </nav>
     );
 }

@@ -1,39 +1,61 @@
 import LogoWhite from "../images/logo-white.svg";
-import FacebookIcon from '@mui/icons-material/Facebook';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import PhoneInTalkIcon from '@mui/icons-material/PhoneInTalk';
-import MailIcon from '@mui/icons-material/Mail';
+import FacebookIcon from "@mui/icons-material/Facebook";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import TwitterIcon from "@mui/icons-material/Twitter";
+
+const columns = [
+    { title: "Product", links: ["Features", "Pricing", "Integrations", "Changelog"] },
+    { title: "Company", links: ["About", "Careers", "Blog", "Contact"] },
+    { title: "Resources", links: ["Docs", "Community", "Support", "Status"] },
+];
 
 export default function Footer() {
     return (
-        <footer className="w-full bg-gray-900 text-white text-left">
-            <div className="max-w-screen-2xl w-3/4 max-xl:w-11/12 mx-auto">
-                <div className="flex justify-between mx-auto my-20 max-md:flex-col max-xs:my-16">
-                    <div className="w-2/4 max-md:w-full max-md:mx-auto max-xs:my-10">
-                        <img className="w-2/4" src={LogoWhite} alt="Logo White" />
-                        <p className="max-w-xs my-8 max-xs:my-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nulla quam, hendrerit lacinia vestibullum a, ultrices quis sem.</p>
-                        <div className="flex my-2">
-                            <PhoneInTalkIcon />
-                            <p className="ml-8">phone: +1-543-123-4567</p>
-                        </div>
-                        <div className="flex my-2">
-                            <MailIcon />
-                            <p className="ml-8">example@huddle.com</p>
-                        </div>
-                        <div className="my-10 max-xs:my-6">
-                            <FacebookIcon className="cursor-pointer max-xs:text-xs"/>
-                            <InstagramIcon className="mx-6 cursor-pointer max-xs:text-xs max-xs:mx-4"/>
-                            <TwitterIcon className="cursor-pointer max-xs:text-xs"/>
-                        </div>
-                    </div>
-                    <div className="w-2/4 max-md:w-full ml-36 max-xl:ml-0">
-                        <h3 className="font-poppins text-2xl uppercase max-xs:text-xl">newsletter</h3>
-                        <p className="max-w-xs my-8 mb-4 max-xs:my-2">To receive tips on how to grow your community, sign up to our weekly newsletter. We'll never send you spam or pass on your email address.</p>
-                        <form action="">
-                            <input className="text-black text-lg rounded-md mr-6 p-2" type="email" name="email" id="email" />
-                            <input className="rounded-lg bg-pink-600 hover:bg-pink-400 capitalize p-3 px-10 my-4 cursor-pointer" type="submit" value="submit" />
+        <footer className="border-t border-white/10 bg-night-soft">
+            <div className="container-x py-16">
+                <div className="grid grid-cols-2 md:grid-cols-5 gap-10">
+                    {/* brand + newsletter */}
+                    <div className="col-span-2">
+                        <img className="w-32" src={LogoWhite} alt="Huddle logo" />
+                        <p className="mt-5 max-w-xs text-sm text-muted leading-relaxed">
+                            The all-in-one platform to build, grow, and moderate communities your fans will love.
+                        </p>
+                        <form className="mt-6 flex max-w-sm gap-2" onSubmit={(e) => e.preventDefault()}>
+                            <label htmlFor="footer-email" className="sr-only">Email address</label>
+                            <input
+                                id="footer-email"
+                                type="email"
+                                required
+                                placeholder="Enter your email"
+                                className="flex-1 rounded-lg bg-white/5 border border-white/10 px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-brand placeholder:text-muted"
+                            />
+                            <button type="submit" className="rounded-lg bg-brand-gradient px-5 py-2.5 text-sm font-semibold shadow-glow hover:-translate-y-0.5 transition-transform">
+                                Subscribe
+                            </button>
                         </form>
+                    </div>
+
+                    {/* link columns */}
+                    {columns.map((column) => (
+                        <div key={column.title}>
+                            <h3 className="font-poppins font-semibold text-sm">{column.title}</h3>
+                            <ul className="mt-4 space-y-3">
+                                {column.links.map((link) => (
+                                    <li key={link}>
+                                        <a href="#top" className="text-sm text-muted hover:text-white transition-colors">{link}</a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    ))}
+                </div>
+
+                <div className="mt-14 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <p className="text-sm text-muted">&copy; {new Date().getFullYear()} Huddle. All rights reserved.</p>
+                    <div className="flex items-center gap-4">
+                        <a href="/" aria-label="Facebook" className="text-muted hover:text-white transition-colors"><FacebookIcon /></a>
+                        <a href="/" aria-label="Instagram" className="text-muted hover:text-white transition-colors"><InstagramIcon /></a>
+                        <a href="/" aria-label="Twitter" className="text-muted hover:text-white transition-colors"><TwitterIcon /></a>
                     </div>
                 </div>
             </div>
